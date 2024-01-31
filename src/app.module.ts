@@ -4,12 +4,13 @@ import { UserModule } from './modules/users/user.module';
 import { CreateUserUseCase } from './modules/users/useCases/create-user.usecase';
 import { PrismaService } from './infra/database/prisma.service';
 import { LoginModule } from './modules/login/login.module';
+import { ProfileUserUseCase } from './modules/users/useCases/profile-user.usercase';
 
 
 
 @Module({
-  imports: [LoginModule],
+  imports: [LoginModule, UserModule],
   controllers: [UserController],
-  providers: [CreateUserUseCase, PrismaService],
+  providers: [CreateUserUseCase,ProfileUserUseCase , PrismaService],
 })
 export class AppModule {}
