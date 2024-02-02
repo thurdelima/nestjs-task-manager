@@ -21,7 +21,7 @@ export class UserController {
 
         const user = await this.createUserUseCase.execute(data);
 
-        return CreateUserResponseSchemaDTO.safeParse(user);
+        return CreateUserResponseSchemaDTO.parse(user);
     }
 
     @Get("/profile")
