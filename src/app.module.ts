@@ -7,11 +7,12 @@ import { LoginModule } from './modules/login/login.module';
 import { ProfileUserUseCase } from './modules/users/useCases/profile-user.usercase';
 import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
+import { TaskUserModule } from './modules/tasks/task-user.module';
 
 
 
 @Module({
-  imports: [LoginModule, UserModule],
+  imports: [LoginModule, UserModule, TaskUserModule],
   controllers: [UserController],
   providers: [CreateUserUseCase,ProfileUserUseCase , PrismaService, {
     provide: APP_PIPE,
