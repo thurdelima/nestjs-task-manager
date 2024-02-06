@@ -1,11 +1,12 @@
 import { PrismaService } from "src/infra/database/prisma.service";
 import { ITaskUserRepository } from "../task-user.repository";
 import { TaskUserRequestDTO, TaskUserResponseDTO } from "../../dto/task-user.dto";
+import { Injectable } from "@nestjs/common";
 
 
 
 
-
+@Injectable()
 export class TaskUserPrismaRepository implements ITaskUserRepository {
 
     constructor(private prisma: PrismaService) {}
