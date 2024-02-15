@@ -13,8 +13,8 @@ import { TaskUserModule } from './modules/tasks/task-user.module';
 
 @Module({
   imports: [LoginModule, UserModule, TaskUserModule],
-  controllers: [UserController],
-  providers: [CreateUserUseCase,ProfileUserUseCase , PrismaService, {
+  controllers: [],
+  providers: [{
     provide: APP_PIPE,
     useClass: ZodValidationPipe
   }],
