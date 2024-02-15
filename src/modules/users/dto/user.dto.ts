@@ -16,3 +16,8 @@ export type FileDTO = {
     size: number
 }
 
+export type AvatarDTO = {
+    idUser: string,
+    file: FileDTO
+}
+
