@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, Put, Request, UploadedFile, UseGuards, Use
 import { CreateUserUseCase } from "./useCases/create-user.usecase";
 import { CreateUserDTO, FileDTO } from "./dto/user.dto";
 import { CreateUserValidationPipe } from "./pipe/create-user.validation.pipe";
-import { AuthGuard } from "src/infra/providers/auth-guard.provider";
+import { AuthGuard } from "../../infra/providers/auth-guard.provider";
 import { ProfileUserUseCase } from "./useCases/profile-user.usercase";
 import { CreateUserResponseSchemaDTO, CreateUserSchemaDTO } from "./schemas/create-user.schema";
 import { FileInterceptor } from "@nestjs/platform-express";

@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { AvatarDTO } from "../dto/user.dto";
-import { IStorage } from "src/infra/providers/storage/storage";
-import { PrismaService } from "src/infra/database/prisma.service";
+import { IStorage } from "../../../infra/providers/storage/storage";
+import { PrismaService } from "../../../infra/database/prisma.service";
 import { extname } from "path";
 
 
