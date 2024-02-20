@@ -3,6 +3,7 @@ import { CreateUserUseCase } from "../create-user.usecase"
 import { CreateUserDTO } from "../../dto/user.dto";
 import { PrismaService } from "../../../../infra/database/prisma.service";
 import { hash } from "bcrypt";
+import { HttpException, HttpStatus } from "@nestjs/common";
 
 const prismaServiceMock = {
     user: {
@@ -55,6 +56,8 @@ describe("CreateUserCase test suite", () => {
             },
           });
           expect(hash).toHaveBeenCalledWith(data.password, 10);
+
+        
       
           
           expect(prismaServiceMock.user.create).toHaveBeenCalledWith({
@@ -64,6 +67,24 @@ describe("CreateUserCase test suite", () => {
             },
           });
 
+         
+
 
     })
+
+    it("Should not be able to create a new user if username already exists", async () => {
+
+      const data: CreateUserDTO = {
+          email: 'email@already_created.com',
+          name: 'name test',
+          password: '1234',
+          username: 'username_already_created'
+      }
+      prismaServiceMock.user.findFirst.mockResolvedValueOnce(data);
+
+      await expect(createUserUseCase.execute(data)).rejects.toThrow(new HttpException('User already exists!', HttpStatus.BAD_REQUEST));
+      expect(prismaServiceMock.user.create).not.toHaveBeenCalled();
+
+
+  })
 })
