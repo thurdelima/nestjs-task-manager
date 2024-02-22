@@ -9,11 +9,12 @@ import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
 import { TaskUserModule } from './modules/tasks/task-user.module';
 import { NotificationModule } from './modules/notification/notification.module';
+import { ScheduleTaskModule } from './infra/jobs/schedule.module';
 
 
 
 @Module({
-  imports: [LoginModule, UserModule, TaskUserModule, NotificationModule],
+  imports: [LoginModule, UserModule, TaskUserModule, NotificationModule, ScheduleTaskModule],
   controllers: [],
   providers: [{
     provide: APP_PIPE,
