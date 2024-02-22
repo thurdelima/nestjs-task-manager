@@ -8,11 +8,12 @@ import { ProfileUserUseCase } from './modules/users/useCases/profile-user.userca
 import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
 import { TaskUserModule } from './modules/tasks/task-user.module';
+import { NotificationModule } from './modules/notification/notification.module';
 
 
 
 @Module({
-  imports: [LoginModule, UserModule, TaskUserModule],
+  imports: [LoginModule, UserModule, TaskUserModule, NotificationModule],
   controllers: [],
   providers: [{
     provide: APP_PIPE,
