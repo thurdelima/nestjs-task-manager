@@ -8,7 +8,7 @@ import { CreateUserResponseSchemaDTO, CreateUserSchema, CreateUserSchemaDTO } fr
 import { FileInterceptor } from "@nestjs/platform-express";
 import { UploadAvatarUserUseCase } from "./useCases/upload-avatar-user.usecase";
 import { zodToOpenAPI } from "nestjs-zod";
-import { ApiBody, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiBody, ApiResponse, ApiTags } from "@nestjs/swagger";
 
 const schemaUserSwagger = zodToOpenAPI(CreateUserSchema)
 
@@ -38,6 +38,7 @@ export class UserController {
 
   @Get("/profile")
   @UseGuards(AuthGuard)
+  @ApiBearerAuth()
   async profile(@Request() req) {
 
     return await this.profileUserUseCase.execute(req.user.sub);
