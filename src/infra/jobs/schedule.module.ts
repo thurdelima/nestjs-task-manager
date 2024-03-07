@@ -11,14 +11,18 @@ import { ClientsModule, Transport } from "@nestjs/microservices";
 
 
 @Module({
-    imports: [ScheduleModule.forRoot(),  ClientsModule.register([
+    imports: [ScheduleModule.forRoot(), ClientsModule.register([
         {
             name: 'NOTIFICATION',
-            transport: Transport.TCP,
-            options: {port: 30002, host: '127.0.0.1'},
+            transport: Transport.KAFKA,
+            options: {
+                client: {
+                    brokers: ['127.0.0.1:9092']
+                }
+            },
         }
     ])],
-    providers: [NotificationTaskUserSchedule, 
+    providers: [NotificationTaskUserSchedule,
         {
             provide: ITaskUserRepository,
             useClass: TaskUserPrismaRepository
@@ -26,4 +30,4 @@ import { ClientsModule, Transport } from "@nestjs/microservices";
     ]
 })
 
-export class ScheduleTaskModule {}
+export class ScheduleTaskModule { }
