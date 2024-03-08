@@ -18,6 +18,12 @@ import { ClientsModule, Transport } from "@nestjs/microservices";
             options: {
                 client: {
                     brokers: ['127.0.0.1:9092']
+                },
+                consumer: {
+                    groupId: 'tp_task_manager'
+                },
+                producer: {
+                    allowAutoTopicCreation: true,
                 }
             },
         }
