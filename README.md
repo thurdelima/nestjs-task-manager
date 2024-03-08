@@ -22,6 +22,59 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+
+## 👨‍💼👨‍💼  Task manager project
+Api nest of CRUD tasks that comunicate with microservice notification by kafka that send e-mail/notify of new task created.
+
+
+## 👷🏗️ System design
+Comunicate between services.
+
+<div align="center" >
+  <img src="./arquitecture_ms-notification.png">
+</div>
+
+<div align="center" >
+  <img src="./kafka_arquitecture.png">
+</div>
+
+## Running locally
+
+```bash
+$ git clone project
+
+$ run command docker compose up to use kafka container
+
+$ npm install
+
+$ config .env.example
+
+$ npx prisma migrate
+
+$ npm run start:dev
+```
+
+
+## Running microservice of notification locally
+
+```bash
+$ git clone https://github.com/thurdelima/nestjs-microservice-notification.git
+
+$ npm install
+
+$ config e-mail credencials in app.module.ts
+
+$ npm run start:dev
+```
+
+## 🔬🔬 Collections
+Import task_manager_collection.json in your insomnia or postman.
+
+<div align="center" >
+  <img src="./inso.png">
+</div>
+
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
